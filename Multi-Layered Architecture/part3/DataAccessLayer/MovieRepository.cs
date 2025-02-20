@@ -22,5 +22,27 @@ namespace Multi_Layered_Architecture.part3.DataAccessLayer
             return await _context.Movies.Include(m => m.Reviews)
                 .FirstOrDefaultAsync(m => m.Id == id);
         }
+
+        public async Task AddMovieAsync(Movie movie)
+        {
+            await _context.Movies.AddAsync(movie);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateMovieAsync(Movie movie)
+        {
+            _context.Movies.Update(movie);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteMovieAsync(int id)
+        {
+            var movie = await _context.Movies.FindAsync(id);
+            if (movie != null)
+            {
+                _context.Movies.Remove(movie);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

@@ -7,5 +7,7 @@
         public int UserId { get; set; }
         public string ReviewText { get; set; }
         public DateTime ReviewDate { get; set; }
+
+        public Movie Movie { get; set; }  // Điều hướng đến Movie
     }
 }

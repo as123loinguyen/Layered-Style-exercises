@@ -6,5 +6,8 @@ namespace Multi_Layered_Architecture.part3.DataAccessLayer
     {
         Task<IEnumerable<Movie>> GetAllMoviesAsync();
         Task<Movie> GetMovieByIdAsync(int id);
+        Task AddMovieAsync(Movie movie);
+        Task UpdateMovieAsync(Movie movie);
+        Task DeleteMovieAsync(int id);
     }
 }
