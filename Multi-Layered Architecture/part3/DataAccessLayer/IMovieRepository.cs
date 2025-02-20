@@ -9,5 +9,8 @@ namespace Multi_Layered_Architecture.part3.DataAccessLayer
         Task AddMovieAsync(Movie movie);
         Task UpdateMovieAsync(Movie movie);
         Task DeleteMovieAsync(int id);
+
+        // 🔹 Thêm phương thức hỗ trợ gọi Stored Procedure
+        Task<IEnumerable<Movie>> GetTopRatedMoviesWithSpAsync(int topCount);
     }
 }

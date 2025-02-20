@@ -6,5 +6,6 @@ namespace Multi_Layered_Architecture.part3.ServiceLayer
     {
         Task<IEnumerable<Movie>> GetAllMoviesAsync();
         Task<Movie> GetMovieByIdAsync(int id);
+        Task<IEnumerable<Movie>> GetTopRatedMoviesWithSpAsync(int topCount); // Thêm phương thức này
     }
 }

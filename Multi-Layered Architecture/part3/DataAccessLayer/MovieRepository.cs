@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Multi_Layered_Architecture.part3.CoreLayer.Entities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Multi_Layered_Architecture.part3.DataAccessLayer
 {
@@ -43,6 +45,14 @@ namespace Multi_Layered_Architecture.part3.DataAccessLayer
                 _context.Movies.Remove(movie);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        // ✅ Thêm phương thức gọi Stored Procedure lấy top phim đánh giá cao
+        public async Task<IEnumerable<Movie>> GetTopRatedMoviesWithSpAsync(int topCount)
+        {
+            return await _context.Movies
+                .FromSqlRaw("EXEC GetTopRatedMovies @p0", topCount)
+                .ToListAsync();
         }
     }
 }
